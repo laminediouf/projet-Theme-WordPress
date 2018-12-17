@@ -1,0 +1,18 @@
+<div id="header">
+    <h1><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
+    <?php bloginfo('description'); ?>
+</div>
+<?php if(have_posts()) : ?><?php while(have_posts()) : the_post(); ?>
+    <div class="post" id="post-<?php the_ID(); ?>">
+
+        <h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
+
+        <div class="post_content">
+            <?php the_content(); ?>
+        </div>
+    </div>
+<?php endwhile; ?>
+    <?php the_excerpt(); ?>
+<?php else : ?> <h2 class="center">Aucun article trouvé. Essayer une autre recherche ?</h2> <?php include (TEMPLATEPATH . '/searchform.php'); ?>
+<?php endif; ?>
+</div>
